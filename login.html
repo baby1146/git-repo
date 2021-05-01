@@ -6,11 +6,11 @@
     <title>GitHub API</title>
    
 <style>
-    #sec
+    #githubPage
     {
         display:none;
     }
-    #id1,#id2
+    #username_,#password_
     {
         color:red;
     }
@@ -45,9 +45,14 @@
        
 
     }
-    #res{
+    #invalid-res{
         text-align: center;
         color:red;
+        
+    }
+    #valid-res{
+        text-align: center;
+        color:green;
         
     }
     #loginButton{
@@ -69,42 +74,42 @@
 </head>
 
 <body>
-    <section id="first" >
+    <section id="loginPage" >
  <h3 id="lo">Login Page</h3>
  <div id="div1" >
-    <form  >
-        <table align="center">
-            <tr><th></th>
-       <td> <input id="username"  type="text" name="name" placeholder="Username"><span id="id1"></span></td><br>
-        </tr>
-      
-        <tr>
-            <th></th>
-       <td> <input id="password"  type="password" name="password" placeholder="password"><span id="id2"></span></td><br>
-       </tr>
-    </table>
+    <form id="login_form" >
+        
+       <input id="username"  type="text" name="name" placeholder="Username"><span id="username_"></span><br>
+        <input id="password"  type="password" name="password" placeholder="password"><span id="password_"></span><br>
         <input type="button"  value="login" id="loginButton" >
        
     </form>
+
+    <!-- <form id="login_form" class="form-inline mx-auto" >
+        <input id="usernamet" class="form-control mb-5" type="text" name="name" placeholder="Username"><span id="username_"></span></br>
+        <input id="password" class="form-control mb-5" type="password" name="password" placeholder="Password"><span id="password_"></span></br>
+        <input type="button"  value="login" id="loginButton">
+    </form> -->
 </div>
 
-<h4 id="res" ></h4>
+<h4 id="invalid-res" ></h4>
+<h4 id="valid-res"></h4>
 </section>
 
-<section id="sec">
+<section id="githubPage">
 
 
     <h3 class="text-center mt-5">GitHub API</h3>
-    <form id="gitHubForm" class="form-inline mx-auto" style="width: 280px">
+    <form class="form-inline mx-auto" style="width: 280px">
         <input id="usernameInput" class="form-control mb-5" type="text" name="username" placeholder="GitHub Username">
-        <input type="submit" class="btn btn-primary ml-2 mb-5" value="Submit">
+        <input type="button" class="btn btn-primary ml-2 mb-5" value="github" id="githubButton">
     </form>
     <ul id="userRepos" class="list-group mx-auto mb-5" style="width: 500px">
 
     </ul>
     
     
-    <script src="login.js"></script>
+    <script src="demo.js"></script>
     
 </body>
 

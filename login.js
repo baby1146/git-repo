@@ -13,37 +13,36 @@ login.addEventListener('click', (e) => {
     let pass=password.value;
 
 
-    let a = document.getElementById("username");
-    let aa = a.value;
+    let user_name = document.getElementById("username");
+    let userName = user_name.value;
     //console.log(aa);
-    let doc1=document.getElementById("id1");
-    if (aa === "") {
+    let doc1=document.getElementById("username");
+    if (!userName) {
        // alert("enter ur name");
-        doc1.innerHTML="Enter Your name!";	
+        doc1.style.border="2.5px solid red";	
         return false;
     }
-    else if (aa.length < 3) {
+    else if (userName.length < 3) {
        // alert("Name should have Minimum  3 character!");
-       doc1.innerHTML="Name should have Minimum  3 character!";	
-
-        return false;
+       doc1.style.border="2.5px solid red";	
+     return false;
     }
     else{
-        doc1.innerHTML="";	
+        doc1.style.border="1px solid black";	
         
     }
 
-    let b = document.getElementById("password");
-    let bb = b.value;
-    let doc2=document.getElementById("id2");
+    let pass_word = document.getElementById("password");
+    let passWord = pass_word.value;
+    let doc2=document.getElementById("password");
 
-    if (bb === "") {
+    if (!passWord) {
        // alert("enter ur password");
-        doc2.innerHTML="Enter Your Password!";	
+        doc2.style.border="2.5px solid red";	
         return false;
     }
     else{
-        doc2.innerHTML="";
+        doc2.style.border="1px  solid black";	
             
 
     }
@@ -52,9 +51,9 @@ login.addEventListener('click', (e) => {
     validateUserLogin(user,pass);
     })
 
-const gitHubForm = document.getElementById('gitHubForm');
+const gitHubForm = document.getElementById('githubButton');
 
-gitHubForm.addEventListener('submit', (e) => {
+gitHubForm.addEventListener('click', (e) => {
 
 
     e.preventDefault();
@@ -67,54 +66,9 @@ gitHubForm.addEventListener('submit', (e) => {
     requestUserRepos(gitHubUsername);
 
 })
-function validateUserLogin(u, p) {
+function validateUserLogin(user_name, pass_word) {
 
-    console.log("function loaded");
-    // first.addEventListener('submit', (e) => {
-
-
-        //e.preventDefault();
-        let a = document.getElementById("username");
-        let aa = a.value;
-        //console.log(aa);
-        let doc1=document.getElementById("id1");
-        if (aa === "") {
-           // alert("enter ur name");
-            doc1.innerHTML="Enter Your name!";	
-            return false;
-        }
-        else if (aa.length < 3) {
-           // alert("Name should have Minimum  3 character!");
-           doc1.innerHTML="Name should have Minimum  3 character!";	
-
-            return false;
-        }
-        else{
-            doc1.innerHTML="";	
-            
-        }
-
-        let b = document.getElementById("password");
-        let bb = b.value;
-        let doc2=document.getElementById("id2");
-
-        if (bb === "") {
-           // alert("enter ur password");
-            doc2.innerHTML="Enter Your Password!";	
-            return false;
-        }
-        else{
-            doc2.innerHTML="";
-            	
-
-        }
-
-    // })
-
-
-
-
-    const url = '/data/users.json';
+      const url = '/data/users.json';
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = function () {
@@ -124,24 +78,24 @@ function validateUserLogin(u, p) {
 
         let i, flag = 0;
         for (i = 0; i < 4; i++) {
-            if ((u == data[i].username) && (p == data[i].password)) {
+            if ((user_name == data[i].username) && (pass_word== data[i].password)) {
                 flag = 1;
                 break;
             }
             else  {
                 
-                let r=document.getElementById("res");
-            r.innerHTML="Enter valid username and password";
+                let result=document.getElementById("invalid-res");
+            result.innerHTML="Enter valid username and password";
     
             }
         }
         if (flag === 1) {
-            let r=document.getElementById("res");
-           r.innerHTML="Successfully login your page";
+            let result=document.getElementById("valid-res");
+           result.innerHTML="Successfully login your page";
           
            alert("success");
-            document.getElementById('first').style.display = "none";
-            document.getElementById('sec').style.display = "block";
+            document.getElementById('loginPage').style.display = "none";
+            document.getElementById('githubPage').style.display = "block";
         }
        
     };
